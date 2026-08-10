@@ -23,10 +23,10 @@ Accueillir, construire, progresser.
 ## Activity & Overview
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/YowPro/YowPro/main/output/activity-dark.svg?v=2" />
-  <img alt="Commit Activity" src="https://raw.githubusercontent.com/YowPro/YowPro/main/output/activity-light.svg" width="416px" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/YowPro/Github-Gist-Status/main/output/activity-dark.svg?v=2" />
+  <img alt="Commit Activity" src="https://raw.githubusercontent.com/YowPro/Github-Gist-Status/main/output/activity-light.svg" width="416px" />
 </picture>
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/YowPro/YowPro/main/output/overview-dark.svg?v=2" />
-  <img alt="GitHub Overview" src="https://raw.githubusercontent.com/YowPro/YowPro/main/output/overview-light.svg" width="416px" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/YowPro/Github-Gist-Status/main/output/overview-dark.svg?v=2" />
+  <img alt="GitHub Overview" src="https://raw.githubusercontent.com/YowPro/Github-Gist-Status/main/output/overview-light.svg" width="416px" />
 </picture>
