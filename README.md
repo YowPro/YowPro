@@ -7,7 +7,7 @@ I'd rather try and learn than let it pass. Embrace, build, grow.
 </em></sub></p>
 
 <p align="left"><sub><em>
-Nouvelles technologies, nouveaux domaines, nouveaux outils : je ne m'arrête pas devant l'inconnu. <br />
+Je ne m'arrête pas face à une nouvelle technologie, un nouveau domaine, un nouvel outil. <br />
 Plutôt que de laisser passer une opportunité, je choisis d'essayer et d'apprendre. <br />
 Accueillir, construire, progresser.
 </em></sub></p>
@@ -16,7 +16,7 @@ Accueillir, construire, progresser.
 
 ## Now
 
-2026.08~ing **Cybersecurity & AI enthusiast** — Learning on [TryHackMe](https://tryhackme.com), CTF challenges & Python 🐍
+2026.08~ing **Cybersecurity & AI enthusiast** — Learning on [@YesWeHack](https://www.yeswehack.com/fr)
 
 <br />
 
