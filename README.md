@@ -1,7 +1,7 @@
 ## Introduce
 
 <p align="left"><sub><em>
-Always Accept New. <br />
+I'm Yowan ~ <br />
 New tech, new domains, new tools. I don't stop at the unfamiliar. <br />
 I'd rather try and learn than let it pass. Embrace, build, grow.
 </em></sub></p>
@@ -12,14 +12,16 @@ Plutôt que de laisser passer une opportunité, je choisis d'essayer et d'appren
 Accueillir, construire, progresser.
 </em></sub></p>
 
-<br />
+<br /> 
 
 ## Now
 
 2026.08~ing **Cybersecurity & AI enthusiast** — Learning on [@YesWeHack](https://www.yeswehack.com/fr)
 
 <br />
+
 ## Activity & Overview
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/YowPro/Github-Gist-Status/main/output/activity-dark.svg?v=2" />
   <img alt="Commit Activity" src="https://raw.githubusercontent.com/YowPro/Github-Gist-Status/main/output/activity-light.svg" width="416px" />
