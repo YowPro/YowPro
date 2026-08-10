@@ -1,0 +1,229 @@
+# Github-Gist-Status
+
+GitHub 프로필에 고정(pin)할 수 있는 Gist를 자동으로 업데이트합니다.
+
+<img width="907" height="195" alt="preview" src="https://github.com/user-attachments/assets/7ee75ec5-1d2f-41c4-9c3c-6c1b0b68272a" />
+
+[English](README.md)
+
+**3가지 Gist를 지원합니다:**
+
+| Gist | 설명 | 예시 |
+|------|------|------|
+| **Activity** | 커밋 시간대별 활동 분석 | `🌞 Morning  120 commits ██████░░░░░░░  25.0%` |
+| **Overview** | GitHub 통계 요약 | `⭐ Total Stars: 142` |
+| **Project** | 진행 중 프로젝트 + 커스텀 태그 | `📦 my-project  ⭐ 12  🍴 3  v1.0` |
+
+### Activity Gist
+
+커밋 기록을 분석하여 시간대별 활동량을 바 차트로 표시합니다.
+Gist 제목은 `{이름}'s Commit Activity` 형식으로 표시됩니다.
+
+```
+🌞 Morning    73 commits ███████▍░░░░░░░░░░░░░  19.3%
+🌆 Daytime   142 commits ██████████████▍░░░░░░░  37.6%
+🌃 Evening   112 commits ███████████▎░░░░░░░░░░  29.6%
+🌙 Night      51 commits █████▏░░░░░░░░░░░░░░░  13.5%
+```
+
+### Overview Gist
+
+GitHub 프로필 통계를 한눈에 보여줍니다.
+
+```
+⭐    Total Stars:                                142
+➕    Total Commits:                            1,234
+🔀    Total PRs:                                   56
+🚩    Total Issues:                                23
+📦    Contributed to:                              18
+```
+
+### Project Gist
+
+`config/project.json`에 정의한 프로젝트 목록을 보여줍니다. 각 프로젝트는
+스타/포크/버전 정보를 GitHub에서 실시간으로 가져오고, `🚧 WIP`, `🎯 Focus`,
+`TypeScript` 같은 커스텀 태그를 자유롭게 추가할 수 있습니다.
+
+```
+📦  everything-gemini-code   ⭐ 12   🍴 3   v1.0
+    A harness engineering toolkit for Gemini CLI & Antigravity.
+    🚧 WIP    🎯 Focus    TypeScript
+
+📦  Github-Gist-Status   ⭐ 8   🍴 1   v1.0
+    ✅ Stable
+```
+
+---
+
+## Setup
+
+### 1. Gist 생성
+
+1. [gist.github.com](https://gist.github.com)에서 **2개의 Gist**를 생성합니다.
+   - 하나는 Activity용, 하나는 Overview용
+   - 파일명과 내용은 아무거나 입력해도 됩니다 (자동으로 업데이트됨)
+2. 각 Gist URL에서 ID를 복사합니다.
+   - `https://gist.github.com/username/`**`abc123...`** ← 이 부분
+
+### 2. GitHub Token 생성
+
+1. [GitHub Settings > Developer settings > Personal access tokens](https://github.com/settings/tokens)에서 토큰 생성
+2. 필요한 권한: **`gist`**, **`repo`** (private repo 커밋도 분석하려면), **`read:user`**
+
+### 3. Repository 설정
+
+이 저장소를 Fork하거나 새로 생성한 뒤:
+
+1. **Settings > Secrets and variables > Actions**에서 다음 시크릿을 추가합니다:
+
+   | Secret | 값 | 설명 |
+   |--------|----|------|
+   | `GH_TOKEN` | `ghp_xxxxxxxxxxxx` | GitHub Personal Access Token |
+   | `GIST_ID_ACTIVITY` | `a62343a5341...` | Activity Gist ID |
+   | `GIST_ID_OVERVIEW` | `4b422dc6ce1...` | Overview Gist ID |
+   | `GIST_ID_PROJECT` | `9f0a8b7c6d5...` | Project Gist ID (선택) |
+
+   > **주의**: Gist URL 전체가 아닌, URL 맨 뒤의 **ID 부분만** 입력합니다.
+   > 예: `https://gist.github.com/username/`**`4b422dc6ce14fc228c191cdad3da4d9c`** → `4b422dc6ce14fc228c191cdad3da4d9c`
+
+2. Gist를 하나만 사용하고 싶다면, 해당 Gist ID만 설정하면 됩니다.
+   나머지는 자동으로 건너뜁니다.
+
+### 4. 워크플로우 설정 (선택)
+
+`.github/workflows/schedule.yml`에서 환경변수를 수정할 수 있습니다:
+
+```yaml
+env:
+  TIMEZONE: Asia/Seoul                  # 시간대 (기본: Asia/Seoul)
+  ALL_COMMITS: 'true'                   # true: 전체 커밋 수 / false: 최근 1년
+  K_FORMAT: 'false'                     # true: 1.5k 형식 / false: 1,500 형식
+  OUTPUT_SVG: 'true'                    # true: README에 임베드할 SVG도 output/에 생성
+  OUTPUT_DIR: 'output'                  # SVG 출력 디렉터리
+  PROJECT_CONFIG: 'config/project.json' # 프로젝트 목록 파일 (없으면 Project 모듈 skip)
+```
+
+### 5. GitHub Actions 활성화
+
+1. **Actions** 탭에서 워크플로우를 활성화합니다.
+2. 7시간마다 자동으로 실행되며, `main` 브랜치에 push할 때도 실행됩니다.
+3. **Actions > Update Gists > Run workflow**로 수동 실행도 가능합니다.
+
+### 6. Gist 고정
+
+GitHub 프로필에서 Gist를 고정(pin)하면 프로필에 표시됩니다.
+
+### 7. README에 SVG 임베드 (선택)
+
+Gist와 별개로, Action은 `output/` 폴더에 SVG 파일을 생성해서 저장소에 자동
+커밋합니다. 어떤 README에든 `<picture>` 태그로 임베드하면 라이트/다크 모드에
+따라 자동으로 전환됩니다:
+
+```html
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/<user>/<repo>/main/output/activity-dark.svg" />
+  <img alt="Commit Activity" src="https://raw.githubusercontent.com/<user>/<repo>/main/output/activity-light.svg" />
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/<user>/<repo>/main/output/overview-dark.svg" />
+  <img alt="GitHub Overview" src="https://raw.githubusercontent.com/<user>/<repo>/main/output/overview-light.svg" />
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/<user>/<repo>/main/output/project-dark.svg" />
+  <img alt="Ongoing Projects" src="https://raw.githubusercontent.com/<user>/<repo>/main/output/project-light.svg" />
+</picture>
+```
+
+SVG 생성을 끄려면 워크플로우 env에서 `OUTPUT_SVG: 'false'`로 설정합니다.
+
+### Project SVG 설정
+
+`config/project.json` 파일에 표시할 프로젝트를 나열합니다. 스타/포크/버전은
+GitHub에서 자동으로 가져오고, 상태·스택·포커스 등 원하는 커스텀 태그를 추가
+할 수 있습니다:
+
+```json
+{
+  "title": "Ongoing Projects",
+  "projects": [
+    {
+      "repo": "Jamkris/everything-gemini-code",
+      "description": "A harness engineering toolkit for Gemini CLI & Antigravity.",
+      "tags": [
+        { "icon": "🚧", "label": "WIP" },
+        { "icon": "🎯", "label": "Focus" },
+        { "label": "TypeScript" }
+      ]
+    },
+    {
+      "repo": "Jamkris/Github-Gist-Status",
+      "tags": [{ "icon": "✅", "label": "Stable" }]
+    }
+  ]
+}
+```
+
+- `repo`는 필수 (`owner/name` 형식).
+- `description`은 선택 — 비우면 GitHub repo description 사용.
+- `tags`는 `{ icon?, label }` 배열. 이모지와 텍스트 자유롭게 사용 가능.
+- 파일이 없으면 Project 모듈은 자동으로 skip됩니다.
+
+---
+
+## Local Development
+
+```bash
+# 의존성 설치
+npm install
+
+# .env 파일 생성
+cp .env.example .env
+# .env 파일에 토큰과 Gist ID 입력
+
+# 개발 실행
+npm run dev
+
+# 빌드
+npm run build
+```
+
+---
+
+## Project Structure
+
+```
+Github-Gist-Status/
+├── .github/workflows/
+│   └── schedule.yml        # GitHub Actions (7시간마다 실행)
+├── config/
+│   └── project.json        # 프로젝트 목록 (Project 모듈이 읽음)
+├── src/
+│   ├── index.ts            # 메인 엔트리포인트
+│   ├── types.ts            # 공유 타입 정의
+│   ├── api/
+│   │   ├── graphql.ts      # GraphQL 클라이언트
+│   │   └── queries.ts      # GraphQL 쿼리
+│   ├── modules/
+│   │   ├── activity.ts     # 커밋 활동 분석 모듈
+│   │   ├── overview.ts     # GitHub 개요 모듈
+│   │   └── project.ts      # 프로젝트 쇼케이스 모듈
+│   └── utils/
+│       ├── barChart.ts     # 바 차트 생성 (Gist 텍스트)
+│       ├── svg.ts          # SVG 빌더 (라이트/다크 테마)
+│       ├── format.ts       # 숫자 포맷팅
+│       └── projectConfig.ts # config/project.json 로더
+├── output/                 # 생성된 SVG (Action이 자동 커밋)
+│   ├── activity-{light,dark}.svg
+│   ├── overview-{light,dark}.svg
+│   └── project-{light,dark}.svg
+├── action.yml              # GitHub Action 메타데이터
+├── package.json
+├── tsconfig.json
+└── .env.example
+```
+
+## License
+
+[MIT](LICENSE) (c) 2026 Jamkris
