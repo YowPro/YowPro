@@ -1,0 +1,46 @@
+# Based on github.com/Jamkris/Github-Gist-Status
+name: Update Gist Status
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'output/**'
+      - 'README.md'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */7 * * *'
+
+jobs:
+  update-gists:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
+      - run: node dist/index.js
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIST_ID_ACTIVITY: 5ec20841c5637b41cbccf0ee9b79f8bc
+          GIST_ID_OVERVIEW: e63c8547755e63f60e640774340813cd
+          PROJECT_CONFIG: config/project.json
+          TIMEZONE: Europe/Paris
+          ALL_COMMITS: 'true'
+          K_FORMAT: 'false'
+          OUTPUT_SVG: 'true'
+          OUTPUT_DIR: 'output'
+      - name: Commit generated SVGs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add output/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update generated SVGs"
+            git push
+          fi
