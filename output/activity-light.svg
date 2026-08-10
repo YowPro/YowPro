@@ -21,11 +21,11 @@
     <text x="20" y="142.25" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="13">🌃  Evening</text>
     <text x="195" y="142.25" text-anchor="end" fill="#656d76" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="13">1 commits</text>
     <rect x="205" y="132.25" width="220" height="10" rx="5" fill="#eaeef2" />
-    <rect x="205" y="132.25" width="36.66666666666666" height="10" rx="5" fill="#218bff" />
-    <text x="480" y="142.25" text-anchor="end" fill="#1a7f37" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="13" font-weight="600">16.7%</text>
+    <rect x="205" y="132.25" width="20.000000000000004" height="10" rx="5" fill="#218bff" />
+    <text x="480" y="142.25" text-anchor="end" fill="#1a7f37" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="13" font-weight="600">9.1%</text>
     <text x="20" y="174.75" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="13">🌙  Night  </text>
-    <text x="195" y="174.75" text-anchor="end" fill="#656d76" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="13">5 commits</text>
+    <text x="195" y="174.75" text-anchor="end" fill="#656d76" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="13">10 commits</text>
     <rect x="205" y="164.75" width="220" height="10" rx="5" fill="#eaeef2" />
-    <rect x="205" y="164.75" width="183.33333333333337" height="10" rx="5" fill="#218bff" />
-    <text x="480" y="174.75" text-anchor="end" fill="#1a7f37" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="13" font-weight="600">83.3%</text>
+    <rect x="205" y="164.75" width="200" height="10" rx="5" fill="#218bff" />
+    <text x="480" y="174.75" text-anchor="end" fill="#1a7f37" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="13" font-weight="600">90.9%</text>
 </svg>
