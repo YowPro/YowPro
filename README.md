@@ -19,9 +19,7 @@ Accueillir, construire, progresser.
 2026.08~ing **Cybersecurity & AI enthusiast** — Learning on [@YesWeHack](https://www.yeswehack.com/fr)
 
 <br />
-
 ## Activity & Overview
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/YowPro/Github-Gist-Status/main/output/activity-dark.svg?v=2" />
   <img alt="Commit Activity" src="https://raw.githubusercontent.com/YowPro/Github-Gist-Status/main/output/activity-light.svg" width="416px" />
